@@ -6,17 +6,19 @@ import MealList from "./MealList";
 import { FONT, SPACING } from "./../theme";
 
 const MainPage = () => {
-  const [meals, setMeals] = useState<Meal[]>();
+  const [meals, setMeals] = useState<Meal[]>([]);
   const [searchTerm, setSearchTerm] = useState<string | undefined>();
 
   async function getMeals() {
-    try {
-      const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchTerm}`;
-      const response = await fetch(url);
-      const data = await response.json();
-      setMeals(data.meals);
-    } catch (err) {
-      throw err;
+    if (searchTerm) {
+      try {
+        const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchTerm}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        setMeals(data.meals);
+      } catch (err) {
+        throw err;
+      }
     }
   }
 
@@ -37,13 +39,7 @@ const MainPage = () => {
 
       <SearchWrapper>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <SearchButton
-          onClick={(e: { preventDefault: () => void }) =>
-            searchTerm === "" ? e.preventDefault() : getMeals()
-          }
-        >
-          Search
-        </SearchButton>
+        <SearchButton onClick={() => getMeals()}>Search</SearchButton>
       </SearchWrapper>
       <section>
         <MealList mealList={meals} />

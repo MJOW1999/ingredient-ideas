@@ -14,7 +14,7 @@ const MealList = ({ mealList }: MealListProps) => {
       {mealList ? (
         <Grid>
           {mealList?.map((meal: Meal) => (
-            <MealCard meal={meal} />
+            <MealCard key={meal.idMeal} meal={meal} />
           ))}
         </Grid>
       ) : (
