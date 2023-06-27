@@ -3,10 +3,9 @@ import { useParams } from "react-router-dom";
 import { Recipe } from "../types";
 
 const RecipePage = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  //const { id }: { id: string } = useParams();
+  const params = useParams();
   const [recipeData, setRecipeData] = useState<Recipe>();
-  const url = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=52940";
+  const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${params.id}`;
   async function getRecipe() {
     try {
       const response = await fetch(url);
@@ -20,12 +19,6 @@ const RecipePage = () => {
   useEffect(() => {
     getRecipe();
   }, []);
-
-  if (recipeData && recipeData.strYoutube) {
-    let ytStr = recipeData.strYoutube.split("");
-    let ytId = ytStr[ytStr.length - 1];
-    console.log(ytId);
-  }
 
   return (
     <main>

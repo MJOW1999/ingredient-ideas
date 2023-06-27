@@ -8,7 +8,7 @@ const MainPage = () => {
 
   async function getMeals() {
     try {
-      const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=chicken`;
+      const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchTerm}`;
       const response = await fetch(url);
       const data = await response.json();
       setMeals(data.meals);
@@ -22,7 +22,6 @@ const MainPage = () => {
     getMeals();
   }, []);
 
-  console.log(meals);
   return (
     <main>
       <section>
@@ -34,13 +33,17 @@ const MainPage = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        <button>Search</button>
+        <button
+          onClick={(e) => (searchTerm === "" ? e.preventDefault() : getMeals())}
+        >
+          Search
+        </button>
       </section>
       <section>
         {meals ? (
           meals?.map((meal: Meal) => (
-            <Link to={`recipe/${meal.idMeal}`}>
-              <button key={meal.idMeal}>
+            <Link to={`recipe/${meal.idMeal}`} key={meal.idMeal}>
+              <button>
                 <img
                   alt={meal.strMeal}
                   src={`${meal.strMealThumb}/preview`}
@@ -52,7 +55,7 @@ const MainPage = () => {
             </Link>
           ))
         ) : (
-          <div>No results found</div>
+          <div>No results found, please type the full Ingredient name!</div>
         )}
       </section>
     </main>
