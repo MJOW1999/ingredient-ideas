@@ -7,7 +7,10 @@
 - Checked api to see possible solutions I could create (noted in _[assumptions section](#assumptions)_)
 - Create initial designs.
 - Use Create React App to setup quickly
-- Create a simple UI using a mock api call
+- Create a simple UI using a mock api call for both meal search and recipe page
+- Add search functionality and id routes
+- Split out components from MainPage and RecipePage
+- Style with `styled-components`
 
 ### [Click here to see the Live Demo]([LINK_TO_THE_DEPLOYED_APP])
 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Meal } from "../types";
-import { Link } from "react-router-dom";
+import Search from "./Search";
+import MealList from "./MealList";
 
 const MainPage = () => {
   const [meals, setMeals] = useState<Meal[]>();
@@ -25,14 +26,7 @@ const MainPage = () => {
   return (
     <main>
       <section>
-        <input
-          id="ingredient-search"
-          name="ingredient-search"
-          aria-label="ingredient-search"
-          placeholder="Search for a main ingredient"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-        />
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         <button
           onClick={(e) => (searchTerm === "" ? e.preventDefault() : getMeals())}
         >
@@ -40,23 +34,7 @@ const MainPage = () => {
         </button>
       </section>
       <section>
-        {meals ? (
-          meals?.map((meal: Meal) => (
-            <Link to={`recipe/${meal.idMeal}`} key={meal.idMeal}>
-              <button>
-                <img
-                  alt={meal.strMeal}
-                  src={`${meal.strMealThumb}/preview`}
-                  width={150}
-                  height={150}
-                />
-                <h2>{meal.strMeal}</h2>
-              </button>
-            </Link>
-          ))
-        ) : (
-          <div>No results found, please type the full Ingredient name!</div>
-        )}
+        <MealList mealList={meals} />
       </section>
     </main>
   );
