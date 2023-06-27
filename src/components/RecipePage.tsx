@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Recipe } from "../types";
+import styled from "styled-components";
+import { COLORS, FONT, SPACING } from "../theme";
 
 const RecipePage = () => {
   const params = useParams();
@@ -21,28 +23,33 @@ const RecipePage = () => {
   }, []);
 
   return (
-    <main>
+    <RecipeWrapper>
       {recipeData?.strSource ? (
-        <h1>
-          <a href={recipeData.strSource}>{recipeData?.strMeal}</a>
-        </h1>
+        <RecipeTitle>
+          <TitleLink href={recipeData.strSource}>
+            {recipeData?.strMeal}
+          </TitleLink>
+        </RecipeTitle>
       ) : (
-        <h1>{recipeData?.strMeal}</h1>
+        <TitleNoLink>{recipeData?.strMeal}</TitleNoLink>
       )}
-      <img
+      <RecipeImage
         alt={recipeData?.strMeal}
         src={`${recipeData?.strMealThumb}/preview`}
-        width={150}
-        height={150}
+        width={250}
+        height={250}
       />
-      <h2>{recipeData?.strArea} Food</h2>
-      <h3>Meal Type: {recipeData?.strCategory}</h3>
+      <RecipeDescription>
+        Of {recipeData?.strArea} origin, this {recipeData?.strCategory} recipe
+        is a great choice!{" "}
+      </RecipeDescription>
+
       {recipeData?.strDrinkAlternate && (
         <h4>Goes well with {recipeData.strDrinkAlternate}</h4>
       )}
       <article>
-        <h3>Ingredients</h3>
-        <ol>
+        <SectionTitle>Ingredients</SectionTitle>
+        <IngredientsList>
           {recipeData?.strIngredient1 && (
             <li>
               <b>{recipeData?.strIngredient1}</b> (
@@ -163,22 +170,123 @@ const RecipePage = () => {
               <i>{recipeData?.strMeasure20}</i>)
             </li>
           )}
-        </ol>
+        </IngredientsList>
       </article>
       <article>
-        <h3>Instructions</h3>
-        <p>
+        <SectionTitle>Instructions</SectionTitle>
+        <Instructions>
           <i>{recipeData?.strInstructions}</i>
-        </p>
+        </Instructions>
         {recipeData?.strYoutube && (
-          <h5>
+          <YouTubeText>
             Alternatively there are{" "}
-            <a href={recipeData.strYoutube}>YouTube Instructions</a>
-          </h5>
+            <YouTubeLink href={recipeData.strYoutube}>
+              YouTube Instructions
+            </YouTubeLink>
+          </YouTubeText>
         )}
       </article>
-    </main>
+    </RecipeWrapper>
   );
 };
+
+const RecipeWrapper = styled.main`
+  width: 80vw;
+  margin: 0 auto;
+`;
+
+const RecipeTitle = styled.h1`
+  text-align: center;
+`;
+const TitleNoLink = styled(RecipeTitle)`
+  color: ${COLORS.altText};
+`;
+const TitleLink = styled.a`
+  color: ${COLORS.altText};
+`;
+
+const RecipeImage = styled.img`
+  display: flex;
+  margin: 0 auto;
+  border: 1px solid ${COLORS.border};
+  border-radius: ${SPACING.compact}px;
+
+  @media (min-width: 768px) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 325px;
+    height: 325px;
+  }
+`;
+
+const RecipeDescription = styled.h3`
+  @media (min-width: 768px) {
+    font-size: ${FONT.large}px;
+    text-align: center;
+    margin-top: ${SPACING.grand}px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: ${FONT.xLarge}px;
+  }
+`;
+
+const SectionTitle = styled.h3`
+  text-decoration: underline;
+  text-decoration-color: purple;
+  font-size: ${FONT.medium}px;
+
+  @media (min-width: 768px) {
+    font-size: ${FONT.large}px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: ${FONT.xLarge}px;
+  }
+`;
+
+const IngredientsList = styled.ol`
+  font-size: ${FONT.small}px;
+
+  @media (min-width: 768px) {
+    font-size: ${FONT.medium}px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: ${FONT.large}px;
+  }
+`;
+
+const Instructions = styled.p`
+  font-size: ${FONT.small}px;
+  line-height: 1.2;
+
+  @media (min-width: 768px) {
+    font-size: ${FONT.medium}px;
+    line-height: 1.5;
+    word-spacing: 2px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: ${FONT.large}px;
+  }
+`;
+
+const YouTubeText = styled.h4`
+  @media (min-width: 768px) {
+    font-size: ${FONT.medium}px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: ${FONT.large}px;
+  }
+`;
+
+const YouTubeLink = styled.a`
+  color: ${COLORS.altText};
+`;
 
 export default RecipePage;

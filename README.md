@@ -10,7 +10,7 @@
 - Create a simple UI using a mock api call for both meal search and recipe page
 - Add search functionality and id routes
 - Split out components from MainPage and RecipePage
-- Style with `styled-components`
+- Style with `styled-components` (multiple breakpoints and css theme)
 
 ### [Click here to see the Live Demo]([LINK_TO_THE_DEPLOYED_APP])
 
@@ -30,7 +30,9 @@ Based on this, I came up with some initial designs of what the prototype of this
 
 ![Recipe Page Mobile]()
 
-After checking the API, there was no way to filter by both `category` and `ingredient` at the same time (\*with it preferring `category`)
+After checking the API, there was no way to filter by both `category` and `ingredient` at the same time (_with it preferring `category`_)
+
+Made some adjustments to this design in the styling of the pages
 
 ## Libraries / Tools Used
 
@@ -57,3 +59,6 @@ You can run the unit tests using:
 `npm test`
 
 ## Future Work
+
+- Use the rest of my friend's API and filter by meal type (Vegan, Vegetarian, Gluten Free, etc.)
+- Increase code coverage
