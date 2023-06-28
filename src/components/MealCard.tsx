@@ -45,7 +45,7 @@ const MealLink = styled(Link)`
   justify-content: center;
   align-items: center;
   text-decoration: none;
-  color: ${COLORS.altText};
+  color: ${COLORS.light};
 `;
 
 const MealImage = styled.img`
@@ -59,7 +59,12 @@ const MealImage = styled.img`
 
 const MealTitle = styled.h2`
   text-align: center;
-  margin: 0 2.5%;
+  margin: ${SPACING.compact}px 2.5%;
+  font-size: 1em;
+
+  @media (min-width: 768px) {
+    padding: 2px 0;
+  }
 `;
 
 export default MealCard;

@@ -194,6 +194,7 @@ const RecipePage = () => {
 
 const RecipeWrapper = styled.main`
   width: 80vw;
+  max-width: 940px;
   margin: 0 auto;
 `;
 
@@ -205,6 +206,10 @@ const TitleNoLink = styled(RecipeTitle)`
 `;
 const TitleLink = styled.a`
   color: ${COLORS.altText};
+  &:hover,
+  &:focus {
+    color: ${COLORS.light};
+  }
 `;
 
 const RecipeImage = styled.img`
@@ -289,6 +294,10 @@ const YouTubeText = styled.h4`
 
 const YouTubeLink = styled.a`
   color: ${COLORS.altText};
+  &:hover,
+  &:focus {
+    color: ${COLORS.light};
+  }
 `;
 
 export default RecipePage;

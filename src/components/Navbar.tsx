@@ -29,6 +29,10 @@ const StyledNav = styled.nav`
     text-decoration: none;
     color: ${COLORS.altText};
     font-style: italic;
+    &:hover,
+    &:focus {
+      color: ${COLORS.light};
+    }
   }
 
   @media (min-width: 1024px) {

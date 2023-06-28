@@ -3,13 +3,13 @@ import { styled } from "styled-components";
 import { Meal } from "../types";
 import Search from "./Search";
 import MealList from "./MealList";
-import { FONT, SPACING } from "./../theme";
+import { FONT, SPACING, COLORS } from "./../theme";
 
 const MainPage = () => {
   const [meals, setMeals] = useState<Meal[]>([]);
   const [searchTerm, setSearchTerm] = useState<string>("");
 
-  async function getMeals() {
+  async function getMeals(searchTerm: string) {
     if (searchTerm.length) {
       try {
         const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchTerm}`;
@@ -24,7 +24,7 @@ const MainPage = () => {
   }
 
   useEffect(() => {
-    getMeals();
+    getMeals("chicken");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -41,7 +41,7 @@ const MainPage = () => {
 
       <SearchWrapper>
         <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <SearchButton onClick={() => getMeals()}>Search</SearchButton>
+        <SearchButton onClick={() => getMeals(searchTerm)}>Search</SearchButton>
       </SearchWrapper>
       <section>
         <MealList mealList={meals} />
@@ -68,16 +68,25 @@ const SearchWrapper = styled.section`
 `;
 
 const SearchButton = styled.button`
+  border-radius: ${SPACING.compact}px;
+  border-color: ${COLORS.border};
+  font-size: ${FONT.small}px;
+  background: none;
+  &:hover,
+  &:focus {
+    border-color: transparent;
+    background-color: ${COLORS.light};
+  }
   @media (min-width: 1024px) {
     font-size: 24px;
   }
-  border-radius: ${SPACING.compact}px;
 `;
 
 const Intro = styled.header`
   font-size: ${FONT.medium}px;
   width: 80vw;
   margin: 0 auto ${SPACING.normal}px auto;
+  text-align: center;
 
   @media (min-width: 1024px) {
     font-size: ${FONT.large}px;

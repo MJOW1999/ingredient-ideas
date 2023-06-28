@@ -1,6 +1,7 @@
 export const COLORS = {
   altText: "darkblue",
   border: "#273c75",
+  light: "azure",
   purpleLight: "#9c88ff",
   purpleDark: "#8c7ae6",
 };
@@ -10,7 +11,7 @@ export const FONT = {
   medium: 20,
   large: 22,
   xLarge: 24,
-  xxLarge: 32,
+  xxLarge: 28,
 };
 
 export const SPACING = {
