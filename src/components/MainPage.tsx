@@ -7,15 +7,16 @@ import { FONT, SPACING } from "./../theme";
 
 const MainPage = () => {
   const [meals, setMeals] = useState<Meal[]>([]);
-  const [searchTerm, setSearchTerm] = useState<string | undefined>();
+  const [searchTerm, setSearchTerm] = useState<string>("");
 
   async function getMeals() {
-    if (searchTerm) {
+    if (searchTerm.length) {
       try {
         const url = `https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchTerm}`;
         const response = await fetch(url);
         const data = await response.json();
         setMeals(data.meals);
+        return data.meals;
       } catch (err) {
         throw err;
       }

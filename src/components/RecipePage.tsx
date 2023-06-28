@@ -13,6 +13,7 @@ const RecipePage = () => {
       const response = await fetch(url);
       const data = await response.json();
       setRecipeData(data.meals[0]);
+      return data.meals[0];
     } catch (err) {
       throw err;
     }
