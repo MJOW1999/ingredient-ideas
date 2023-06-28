@@ -39,16 +39,19 @@ const Grid = styled.main`
     margin: 0 auto;
     align-items: center;
     gap: ${SPACING.moderate}px;
+    max-width: 500px;
   }
 
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr;
     gap: ${SPACING.moderate + SPACING.compact}px;
     margin-top: ${SPACING.grand}px;
+    max-width: 750px;
   }
   @media (min-width: 1440px) {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: ${SPACING.moderate}px;
+    max-width: 940px;
   }
 `;
 

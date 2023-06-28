@@ -29,6 +29,10 @@ const Card = styled.article`
   border: 1px solid ${COLORS.border};
   border-radius: ${SPACING.compact}px;
 
+  &:hover {
+    background-color: ${COLORS.purpleLight};
+  }
+
   @media (min-width: 768px) {
     width: 250px;
     height: 250px;
