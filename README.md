@@ -1,6 +1,6 @@
 # Ingredient Ideas
 
-### [Click here to see the Video Review]("")
+### [Click here to see the Video Review](https://www.loom.com/share/8477490ae2a34f58a3a7c17a161ab1f4)
 
 ## Proposed Solution
 
@@ -11,10 +11,19 @@
 - Add search functionality and id routes
 - Split out components from MainPage and RecipePage
 - Style with `styled-components` (multiple breakpoints and css theme)
+- Unit Testing with `Jest`
 
-### [Click here to see the Live Demo]([LINK_TO_THE_DEPLOYED_APP])
+### [Click here to see the Live Version](https://ingredient-ideas.netlify.app/)
 
 ## Screenshots
+
+![Main Page Desktop](./public/images/Main%20-%20Desktop.png)
+
+![Recipe Page Desktop](./public/images/Recipe%20-%20Desktop.png)
+
+![Main Page Mobile](./public/images/Main%20-%20Mobile.png)
+
+![Recipe Page Mobile](./public/images/Recipe%20-%20Mobile.png)
 
 ## Assumptions
 
@@ -22,13 +31,13 @@ Based on the scenario, the main feature that I want to show my friend is that we
 
 Based on this, I came up with some initial designs of what the prototype of this app might look like
 
-![Main Page Desktop]()
+![Main Page Desktop](<./public/images/Main%20Desktop%20(I).png>)
 
-![Recipe Page Desktop]()
+![Recipe Page Desktop](<./public/images/Recipe%20Desktop%20(I).png>)
 
-![Main Page Mobile]()
+![Main Page Mobile](<./public/images/Main%20Mobile%20(I).png>)
 
-![Recipe Page Mobile]()
+![Recipe Page Mobile](<./public/images/Recipe%20Mobile%20(I).png>)
 
 After checking the API, there was no way to filter by both `category` and `ingredient` at the same time (_with it preferring `category`_)
 
@@ -61,4 +70,4 @@ You can run the unit tests using:
 ## Future Work
 
 - Use the rest of my friend's API and filter by meal type (Vegan, Vegetarian, Gluten Free, etc.)
-- Increase code coverage
+- Increase code coverage and expand on tests
